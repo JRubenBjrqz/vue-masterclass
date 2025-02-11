@@ -12,11 +12,11 @@ const getTasks = async () => {
   if (error) useErrorStore().setError({error, customCode: status})
 
   tasks.value = data
-
-  console.log('tasks', tasks.value)
 }
 
 await getTasks()
+
+hello
 </script>
 
 <template>
