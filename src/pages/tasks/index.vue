@@ -15,8 +15,6 @@ const getTasks = async () => {
 }
 
 await getTasks()
-
-hello
 </script>
 
 <template>
