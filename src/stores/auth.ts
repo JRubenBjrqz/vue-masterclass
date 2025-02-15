@@ -1,6 +1,7 @@
 import { profileQuery } from '@/utils/supaQueries'
 import type { User, Session } from '@supabase/supabase-js'
 import type { Tables } from 'database/types'
+import { supabase } from '@/lib/supabaseClient'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = ref<null | User>(null)
@@ -29,10 +30,16 @@ export const useAuthStore = defineStore('auth-store', () => {
     await setProfile()
   }
 
+  const getSession = async () => {
+    const {data} = await supabase.auth.getSession()
+    if (data.session?.user) await setAuth(data.session)
+  }
+
   return {
     user,
     profile,
     setAuth,
+    getSession,
   }
 })
 
