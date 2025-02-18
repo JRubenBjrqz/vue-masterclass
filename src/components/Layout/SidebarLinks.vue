@@ -8,18 +8,31 @@ interface LinkProp {
 const props = defineProps<{
   links: LinkProp[]
 }>()
+
+const emits = defineEmits<{
+  actionClicked: [string]
+}>()
+
+const emitActionClicked = (linkTitle: string) => {
+  emits('actionClicked', linkTitle)
+}
 </script>
 
 <template>
   <template v-for="link in links" :key="link.title">
-    <RouterLink v-if="link.to" exactActiveClass="text-primary bg-muted" :to="link.to" class="nav-link">
+    <RouterLink
+      v-if="link.to"
+      exactActiveClass="text-primary bg-muted"
+      :to="link.to"
+      class="nav-link"
+    >
       <iconify-icon :icon="link.icon"></iconify-icon>
       <span class="hidden text-nowrap lg:block">{{ link.title }}</span>
     </RouterLink>
 
-    <div v-else class="nav-link cursor-pointer">
+    <div v-else class="nav-link cursor-pointer" @click="emitActionClicked(link.title)">
       <iconify-icon :icon="link.icon"></iconify-icon>
-      <span class="hidden lg:block text-nowrap">{{ link.title }}</span>
+      <span class="hidden text-nowrap lg:block">{{ link.title }}</span>
     </div>
   </template>
 </template>
