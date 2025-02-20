@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { login } from '@/utils/supaAuth'
-import { debouncedWatch, watchDebounced } from '@vueuse/core'
+import { debouncedWatch } from '@vueuse/core'
 
 const formData = ref({
   email: '',
@@ -48,7 +48,10 @@ const signin = async () => {
               v-model="formData.email"
               :class="{ 'border-red-500': serverError }"
             />
-            <ul class="text-left text-sm text-red-500" v-if="realTimeErrors?.email.length">
+            <ul
+              class="text-left text-sm text-red-500"
+              v-if="realTimeErrors?.email.length"
+            >
               <li
                 class="list-disc"
                 v-for="error in realTimeErrors.email"
