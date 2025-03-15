@@ -13,7 +13,7 @@ export const useFormErrors = () => {
     serverError.value = error.message == 'Invalid login credentials' ? 'Invalid email or password' : error.message
   }
 
-  const handleLoginForm = (formData: LoginForm) => {
+  const handleLoginForm = async (formData: LoginForm) => {
     realTimeErrors.value = {
       email: [],
       password: []
