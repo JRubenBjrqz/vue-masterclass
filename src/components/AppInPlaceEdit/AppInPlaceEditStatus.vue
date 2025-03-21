@@ -23,15 +23,3 @@ const toggleValue = () => {
     </Transition>
   </div>
 </template>
-
-<style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: transform 0.1s;
-}
-
-.v-enter-from,
-.v-leave-to {
-  transform: scale(0.3);
-}
-</style>
