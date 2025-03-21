@@ -13,6 +13,10 @@ const { user } = storeToRefs(useAuthStore())
 
 const AuthLayout = defineAsyncComponent(() => import('@/components/Layout/main/AuthLayout.vue'))
 const GuestLayout = defineAsyncComponent(() => import('@/components/Layout/main/GuestLayout.vue'))
+
+useMeta({
+  title: 'Pulse',
+})
 </script>
 
 <template>
